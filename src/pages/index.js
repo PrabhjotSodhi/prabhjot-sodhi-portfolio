@@ -39,7 +39,56 @@ export default function Home() {
             <h1>Unleashing creativity through <span>words</span> and bringing ideas to life through <span>code</span>.</h1>
           </div>
         </section>
+
+        <section className="container padding-section">
+          <div className="even-columns">
+            <div>
+              <h2>I’m a Part I Engineering Student at the University of Auckland</h2>
+              <p>As an engineering student, I am constantly learning new skills and expanding my knowledge to adopt a engineering approach to problem solving.</p>
+              <p>In my spare time, I enjoy using programming languages and tools to create various projects that solve a real world problem. I find great satisfaction in bringing my ideas to life through code, and I am always looking for new challenges and opportunities to learn and grow.</p> 
+              <div style={{display: "flex;"}}>
+                <button className="btn-primary" style={{marginRight: "1rem;"}}>Let&apos;s get in touch!</button>
+                <a href="#" className="arrow-button">PDF Resume<svg className="arrow"><use href="./arrow.svg#arrow"></use></svg></a>
+              </div>
+            </div>
+            <div>
+              <div className="fun-fact">
+                <div>
+                  <h2>Fun facts about me</h2>
+                  <p>Favourite book genre is self-development</p>
+                  <p>Korean TV shows are the best! #ItaewonClass</p>
+                  <p>Love videography and photography</p>
+                  <p>I like giving inspirational talks to myself</p>
+                  <p>Mechanical keyboards are awesome</p>
+                  <div className="face"><img src="./avatar.svg" alt="avatar"></img></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
+
+      <footer className="clr-neutral-100" style={{borderTop: "3px solid var(--clr-neutral-900);", borderBottom: "3px solid var(--clr-neutral-900);", padding: "1rem 0;"}}>
+        <div className="container even-columns">
+            <div><h2>Prabhjot Sodhi</h2><p>Thanks for reading. Feel free to chat with me through my socials!</p><p className="fw-bold">My Links</p>
+                <div className="social-list">
+                    <a href="https://www.linkedin.com/in/prabhjotsodhi/" target="_blank" rel="noopener noreferrer"><svg className="social-icon"><use href="/social-icons.svg#linkedin"></use></svg></a>
+                    <a href="https://github.com/PrabhjotSodhi" target="_blank" rel="noopener noreferrer"><svg className="social-icon"><use href="/social-icons.svg#github"></use></svg></a>
+                    <a href="https://www.instagram.com/prabhjotsodhi/" target="_blank" rel="noopener noreferrer"><svg className="social-icon"><use href="/social-icons.svg#instagram"></use></svg></a>
+                    <a href="mailto:sodhiprabhjot23@gmail.com" target="_blank" rel="noopener noreferrer"><svg className="social-mail"><use href="/social-icons.svg#mail"></use></svg></a>
+                </div>
+            </div>
+            <div className="push-right"><h2>How I built this</h2>
+                <p className="fw-bold">Stack</p>
+                <p><a href="https://astro.build/" target="_blank" rel="noopener noreferrer" className="footer-link">Astro</a> + <a href="https://hygraph.com/" target="_blank" rel="noopener noreferrer" className="footer-link">GraphCMS</a></p>
+                <p className="fw-bold">Miscellaneous</p>
+                <p><a href="https://github.com/PrabhjotSodhi/prabhjot-website-astro" target="_blank" rel="noopener noreferrer" className="footer-link">Github Repository</a> + Figma Design</p>
+            </div>
+        </div>
+      </footer>
+      <section className="container even-columns" style={{padding: "0.5rem 0;", display: "flex;"}}>
+          <p>© 2022 - Prabhjot Sodhi</p><p style={{marginLeft: "auto;"}}>Deployed on <a href="https://vercel.com/" target="_blank" rel="noopener noreferrer" className="footer-link">Vercel</a></p>
+      </section>
     </>
   )
 }
