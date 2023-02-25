@@ -1,8 +1,10 @@
 .nav_container {
     padding: 1rem 0;
-    border-bottom: 3px solid var(--clr-neutral-900);
     align-items: center;
     margin-top: 0.5em;
+}
+.border_bottom {
+    border-bottom: 3px solid var(--clr-neutral-900);
 }
 .nav_wrapper {
     display: flex;

@@ -52,6 +52,7 @@ body {
   font-family: var(--ff-primary);
   color: var(--clr-neutral-900);
   background-color: var(--clr-bg);
+  scroll-behavior: smooth;
 }
 .container {
   --max-width: 996px;
@@ -143,6 +144,7 @@ small {
   height: 0.625rem;
   padding-left: 0.5rem;
   transition: transform ease-out .2s;
+  box-sizing: content-box;
 }
 .arrow-button {
   position: relative;
