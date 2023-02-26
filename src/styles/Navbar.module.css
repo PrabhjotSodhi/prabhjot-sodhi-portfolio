@@ -27,6 +27,9 @@
     text-decoration: none;
     color: var(--clr-neutral-900);
 }
+.nav_list a:is(:hover, :focus) {
+    color: var(--clr-hover);
+}
 .logo_text {
     margin: 1.25rem 0 1.25rem 0;
 }

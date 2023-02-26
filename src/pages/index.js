@@ -2,8 +2,7 @@ import Head from 'next/head'
 import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
 import navbar from '@/styles/Navbar.module.css'
-
-const inter = Inter({ subsets: ['latin'] })
+import blog from '@/styles/Blog.module.css'
 
 export default function Home() {
   return (
@@ -70,7 +69,17 @@ export default function Home() {
         <section className="container">
           <div className="padding-section" style={{paddingTop: "0rem;"}} id="writing">
             <h2>From my blog</h2>
-            <div className="carousel"></div>
+            <div className="carousel">
+              <div className={blog.content_window}>
+                  <div className={blog.topics}>
+                    {/* {category.map((topic) => (<small class="topic">{topic}</small>))} */}
+                  </div>
+                  <h2>Hello World</h2>
+                  <p>Hello World</p>
+                  <small style={{fontWeight: "#000000", textTransform: "uppercase"}}>26/02/2023</small>
+                  <a href="/writing"></a>
+              </div>
+            </div>
           </div>
           <div className="padding-section" id="projects">
             <h2>My projects</h2>
