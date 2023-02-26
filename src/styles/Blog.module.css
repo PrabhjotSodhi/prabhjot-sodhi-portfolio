@@ -3,10 +3,11 @@
     background-color: var(--clr-neutral-100);
     border: 3px solid var(--clr-neutral-900);
     border-radius: 8px;
-    padding: 1.75rem 1.5rem 1.25rem 1.25rem;
+    padding: 2.25rem 1.5rem 0.5rem 1.25rem;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    width: 22rem;
     height: min-content;
     box-shadow: var(--drop-shadow);
 }
@@ -16,6 +17,11 @@
 }
 .content_window h2 {
     margin: 0;
+    font-size: 1.25rem;
+}
+.content_window p {
+    font-size: 1rem;
+    line-height: 1.2;
 }
 .content_window div {
     display: flex; 

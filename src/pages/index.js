@@ -69,21 +69,31 @@ export default function Home() {
         <section className="container">
           <div className="padding-section" style={{paddingTop: "0rem;"}} id="writing">
             <h2>From my blog</h2>
-            <div className="carousel">
+            <div className="carousel even-columns" style={{marginTop: "1.5rem"}}>
               <div className={blog.content_window}>
                   <div className={blog.topics}>
-                    {/* {category.map((topic) => (<small class="topic">{topic}</small>))} */}
+                    <small className={blog.topic}>entrepreneurship</small>
+                    <small className={blog.topic}>life</small>
+                    {/* {category.map((topic) => (<small className={blog.topic}>{topic}</small>))} */}
                   </div>
-                  <h2>Hello World</h2>
-                  <p>Hello World</p>
-                  <small style={{fontWeight: "#000000", textTransform: "uppercase"}}>26/02/2023</small>
+                  <h2>How I attended 3 Business Trips in Highschool</h2>
+                  <p>How I went to three different business exchang programes in two different cities to learn about entreprenuership and culture</p>
+                  <small style={{fontWeight: 700, textTransform: "uppercase", textAlign: "right"}}>DEC 15, 2022</small>
                   <a href="/writing"></a>
               </div>
+              
             </div>
           </div>
           <div className="padding-section" id="projects">
             <h2>My projects</h2>
-            <div className="carousel"></div>
+            <div className="carousel even-columns" style={{marginTop: "1.5rem"}}>
+            <div className={blog.content_window}>
+                  <a href="/writing"></a>
+              </div>
+              <div className={blog.content_window}>
+                  <a href="/writing"></a>
+              </div>
+            </div>
           </div>
         </section>
       </main>
