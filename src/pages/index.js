@@ -3,8 +3,31 @@ import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
 import navbar from '@/styles/Navbar.module.css'
 import blog from '@/styles/Blog.module.css'
+import { GraphQLClient, gql } from 'graphql-request'
 
-export default function Home() {
+const graphcms = new GraphQLClient(process.env.API_URL)
+
+const QUERY = gql`
+{ posts {
+    datePublished
+    description
+    id
+    slug
+    title
+    category
+}}`
+
+export async function getStaticProps() {
+  const {posts} = await graphcms.request(QUERY)
+  return {
+    props: {
+      posts,
+    },
+    revalidate: 10,
+  }
+}
+
+export default function Home({posts}) {
   return (
     <>
       <Head>
@@ -34,19 +57,19 @@ export default function Home() {
       <main>
         <section className={["padding-section", navbar.border_bottom].join(' ')}>
           <div className="container">
-            <h2 style={{marginBottom: "0.625rem;"}}>👋 Hi, I&apos;m Prabhjot! </h2>
+            <h2 style={{marginBottom: "0.625rem"}}>👋 Hi, I&aposm Prabhjot! </h2>
             <h1>Unleashing creativity through <span>words</span> and bringing ideas to life through <span>code</span>.</h1>
           </div>
         </section>
 
         <section className="container padding-section">
           <div className="even-columns">
-            <div style={{display: "flex;", flexDirection: "column;", gap: "1.75rem;"}}>
+            <div style={{display: "flex", flexDirection: "column", gap: "1.75rem"}}>
               <h2>I’m a Part I Engineering Student at the University of Auckland</h2>
               <p>As an engineering student, I am constantly learning new skills and expanding my knowledge to adopt a engineering approach to problem solving.</p>
               <p>In my spare time, I enjoy using programming languages and tools to create various projects that solve a real world problem. I find great satisfaction in bringing my ideas to life through code, and I am always looking for new challenges and opportunities to learn and grow.</p> 
-              <div style={{display: "flex;"}}>
-                <button className="btn-primary" style={{marginRight: "1rem;"}}>Let&apos;s get in touch!</button>
+              <div style={{display: "flex"}}>
+                <button className="btn-primary" style={{marginRight: "1rem"}}>Let&apos;s get in touch!</button>
                 <a href="#" className="arrow-button">PDF Resume<svg className="arrow"><use href="./arrow.svg#arrow"></use></svg></a>
               </div>
             </div>
@@ -67,21 +90,32 @@ export default function Home() {
         </section>
 
         <section className="container">
-          <div className="padding-section" style={{paddingTop: "0rem;"}} id="writing">
+          <div className="padding-section" style={{paddingTop: "0rem"}} id="writing">
             <h2>From my blog</h2>
             <div className="carousel even-columns" style={{marginTop: "1.5rem"}}>
+              {posts.map((post) => (
+                  <div className={blog.content_window}>
+                    <div className={blog.topics}>
+                      {post.category.map((topic) => (<small className={blog.topic}>{topic}</small>))}
+                    </div>
+                    <h2>{post.title}</h2>
+                    <p>{post.description}</p>
+                    <small style={{fontWeight: 700, textTransform: "uppercase", textAlign: "right"}}>{new Date(post.datePublished).toLocaleDateString("en-US", {month: 'short', day: 'numeric', year: 'numeric'})}</small>
+                    <a href={post.slug}></a>
+                  </div>
+                ))}
+              {/*
               <div className={blog.content_window}>
                   <div className={blog.topics}>
                     <small className={blog.topic}>entrepreneurship</small>
                     <small className={blog.topic}>life</small>
-                    {/* {category.map((topic) => (<small className={blog.topic}>{topic}</small>))} */}
                   </div>
                   <h2>How I attended 3 Business Trips in Highschool</h2>
                   <p>How I went to three different business exchang programes in two different cities to learn about entreprenuership and culture</p>
                   <small style={{fontWeight: 700, textTransform: "uppercase", textAlign: "right"}}>DEC 15, 2022</small>
                   <a href="/writing"></a>
               </div>
-              
+              */}
             </div>
           </div>
           <div className="padding-section" id="projects">
@@ -98,9 +132,9 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="clr-neutral-100" style={{borderTop: "3px solid #000000", borderBottom: "3px solid #000000", padding: "1rem 0;"}}>
-        <div className="container even-columns" style={{padding: "1.5rem 0;"}}>
-            <div style={{display: "flex;", flexDirection: "column;", gap: "1rem;"}}>
+      <footer className="clr-neutral-100" style={{borderTop: "3px solid #000000", borderBottom: "3px solid #000000", padding: "1rem 0"}}>
+        <div className="container even-columns" style={{padding: "1.5rem 0"}}>
+            <div style={{display: "flex", flexDirection: "column", gap: "1rem"}}>
               <h2>Prabhjot Sodhi</h2>
               <p>Thanks for reading. Feel free to chat with me through my socials!</p>
               <p className="fw-bold">My Links</p>
@@ -111,7 +145,7 @@ export default function Home() {
                     <a href="mailto:sodhiprabhjot23@gmail.com" target="_blank" rel="noopener noreferrer"><svg className="social-mail"><use href="/social-icons.svg#mail"></use></svg></a>
                 </div>
             </div>
-            <div className="push-right"  style={{display: "flex;", flexDirection: "column;", gap: "1rem;"}}>
+            <div className="push-right"  style={{display: "flex", flexDirection: "column", gap: "1rem"}}>
                 <h2>How I built this</h2>
                 <p className="fw-bold">Stack</p>
                 <p><a href="https://astro.build/" target="_blank" rel="noopener noreferrer" className="footer-link">Astro</a> + <a href="https://hygraph.com/" target="_blank" rel="noopener noreferrer" className="footer-link">GraphCMS</a></p>
@@ -120,8 +154,8 @@ export default function Home() {
             </div>
         </div>
       </footer>
-      <section className="container even-columns" style={{padding: "1.5rem 0;", display: "flex;"}}>
-          <p>© 2022 - Prabhjot Sodhi</p><p style={{marginLeft: "auto;"}}>Deployed on <a href="https://vercel.com/" target="_blank" rel="noopener noreferrer" className="footer-link">Vercel</a></p>
+      <section className="container even-columns" style={{padding: "1.5rem 0", display: "flex"}}>
+          <p>© 2022 - Prabhjot Sodhi</p><p style={{marginLeft: "auto"}}>Deployed on <a href="https://vercel.com/" target="_blank" rel="noopener noreferrer" className="footer-link">Vercel</a></p>
       </section>
     </>
   )

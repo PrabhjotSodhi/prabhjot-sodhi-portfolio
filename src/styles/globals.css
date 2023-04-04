@@ -125,6 +125,8 @@ small {
 
 /* Miscellaneous */
 .btn-primary {
+  font: var(--ff-body);
+  font-size: var(--fs-small);
   background-color: var(--clr-primary);
   border: 2px solid var(--clr-neutral-900);
   padding: 1em;
