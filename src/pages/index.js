@@ -57,7 +57,7 @@ export default function Home({posts}) {
       <main>
         <section className={["padding-section", navbar.border_bottom].join(' ')}>
           <div className="container">
-            <h2 style={{marginBottom: "0.625rem"}}>👋 Hi, I&aposm Prabhjot! </h2>
+            <h2 style={{marginBottom: "0.625rem"}}>👋 Hi, I&apos;m Prabhjot! </h2>
             <h1>Unleashing creativity through <span>words</span> and bringing ideas to life through <span>code</span>.</h1>
           </div>
         </section>
@@ -121,12 +121,14 @@ export default function Home({posts}) {
           <div className="padding-section" id="projects">
             <h2>My projects</h2>
             <div className="carousel even-columns" style={{marginTop: "1.5rem"}}>
-            <div className={blog.content_window}>
-                  <a href="/writing"></a>
+              <div className={blog.writing_window}>
+                <h2>Hanguk Drama List</h2>
+                <div>
+                    <img src="/projects.svg" alt="Hanguk Drama List"></img>
+                </div>
+                <a href="#"></a>
               </div>
-              <div className={blog.content_window}>
-                  <a href="/writing"></a>
-              </div>
+
             </div>
           </div>
         </section>
