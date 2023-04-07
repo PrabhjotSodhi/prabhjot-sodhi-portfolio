@@ -2,16 +2,8 @@ import './Blog.css'
 import { GraphQLClient, gql } from 'graphql-request'
 import { useState, useEffect } from 'react'
 
-
-
-function App() {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const graphcms = new GraphQLClient(process.env.API_URL);
-
-      const QUERY = gql`
+const graphcms = new GraphQLClient(import.meta.env.VITE_API_URL);
+const QUERY = gql`
       { posts {
           datePublished
           description
@@ -21,12 +13,23 @@ function App() {
           category
       }}`;
 
-      const data = await graphcms.request(QUERY);
-      setData(data.posts);
-    };
+function App() {
+  const [posts, setPosts] = useState(null);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await graphcms.request(QUERY);
+        setPosts(data.posts);
+      } catch (error) {
+        console.error(error);
+      }
+    };
     fetchData();
+    console.log(posts && posts.map(post => (post.title)))
   }, []);
+
+  
 
   return (
     <div className="App">
@@ -86,9 +89,23 @@ function App() {
         <section className="container">
           <div className="padding-section" style={{paddingTop: "0rem"}} id="writing">
             <h2>From my blog</h2>
-            <div className="carousel even-columns" style={{marginTop: "1.5rem"}}>
-              
-            </div>
+              {posts ? (
+                <div className="carousel" style={{marginTop: "1.5rem"}}>
+                {posts.map((post) => (
+                  <div className="content_window" key={post.id}>
+                    <div className="topics">
+                      {post.category.map((topic) => (<small className="topic" key={topic}>{topic}</small>))}
+                    </div>
+                    <h2>{post.title}</h2>
+                    <p>{post.description}</p>
+                    <small style={{fontWeight: 700, textTransform: "uppercase", textAlign: "right", marginTop: "auto"}}>{new Date(post.datePublished).toLocaleDateString("en-US", {month: 'short', day: 'numeric', year: 'numeric'})}</small>
+                    <a href={post.slug}></a>
+                  </div>
+                ))}
+                </div>
+                ):(
+                  <p>Loading...</p>
+                )}
           </div>
           <div className="padding-section" id="projects">
             <h2>My projects</h2>
@@ -96,7 +113,7 @@ function App() {
               <div className="writing_window">
                 <h2>Hanguk Drama List</h2>
                 <div>
-                    <img src="/projects.svg" alt="Hanguk Drama List"></img>
+                    <img src="/logo.svg" alt="Hanguk Drama List"></img>
                 </div>
                 <a href="#"></a>
               </div>
@@ -122,9 +139,9 @@ function App() {
             <div className="push-right"  style={{display: "flex", flexDirection: "column", gap: "1rem"}}>
                 <h2>How I built this</h2>
                 <p className="fw-bold">Stack</p>
-                <p><a href="https://astro.build/" target="_blank" rel="noopener noreferrer" className="footer-link">Astro</a> + <a href="https://hygraph.com/" target="_blank" rel="noopener noreferrer" className="footer-link">GraphCMS</a></p>
+                <p><a href="https://react.dev/" target="_blank" rel="noopener noreferrer" className="footer-link">React JS</a> + <a href="https://vitejs.dev/" target="_blank" rel="noopener noreferrer" className="footer-link">Vite JS</a> + <a href="https://hygraph.com/" target="_blank" rel="noopener noreferrer" className="footer-link">Hygraph</a></p>
                 <p className="fw-bold">Miscellaneous</p>
-                <p><a href="https://github.com/PrabhjotSodhi/prabhjot-website-astro" target="_blank" rel="noopener noreferrer" className="footer-link">Github Repository</a> + Figma Design</p>
+                <p><a href="https://github.com/PrabhjotSodhi/prabhjot-sodhi-portfolio" target="_blank" rel="noopener noreferrer" className="footer-link">Github Repository</a> + <a href="https://www.figma.com/file/gMWEqPuwOzDr9Ngu4ajcr1/%5BPUBLIC%5D-Portfolio-Design?node-id=0%3A1&t=n2SMN0UF24hTuPkY-1" target="_blank" rel="noopener noreferrer" className="footer-link">Figma Design</a></p>
             </div>
         </div>
       </footer>

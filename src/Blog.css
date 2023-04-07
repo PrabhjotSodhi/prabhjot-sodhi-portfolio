@@ -7,8 +7,8 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    width: 22rem;
-    height: min-content;
+    width: 19rem;
+    height: 16.5rem;
     box-shadow: var(--drop-shadow);
 }
 .content_window svg {
@@ -93,8 +93,8 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    width: 22rem;
-    height: min-content;
+    width: 19rem;
+    height: 16.5rem;
     box-shadow: var(--drop-shadow);
 }
 .writing_window h2 {
@@ -159,3 +159,17 @@
     fill: var(--clr-accent-300);
     color: var(--clr-accent-300);
 }
+
+.carousel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 2rem;
+}
+
+@media (min-width: 50em) {
+    .carousel {
+        grid-auto-flow: column;
+        grid-auto-columns: 1fr;
+    }
+  }
