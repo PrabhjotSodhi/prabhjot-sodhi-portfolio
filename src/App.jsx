@@ -1,8 +1,33 @@
-import { useState } from 'react'
 import './Blog.css'
 import { GraphQLClient, gql } from 'graphql-request'
+import { useState, useEffect } from 'react'
+
+
 
 function App() {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const graphcms = new GraphQLClient(process.env.API_URL);
+
+      const QUERY = gql`
+      { posts {
+          datePublished
+          description
+          id
+          slug
+          title
+          category
+      }}`;
+
+      const data = await graphcms.request(QUERY);
+      setData(data.posts);
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="App">
       <header className="nav_container border_bottom">
@@ -62,6 +87,7 @@ function App() {
           <div className="padding-section" style={{paddingTop: "0rem"}} id="writing">
             <h2>From my blog</h2>
             <div className="carousel even-columns" style={{marginTop: "1.5rem"}}>
+              
             </div>
           </div>
           <div className="padding-section" id="projects">
