@@ -173,3 +173,9 @@
         grid-auto-columns: 1fr;
     }
   }
+
+  @media (max-width: 50em) {
+    .content_window {
+        width: auto;
+    }
+  }

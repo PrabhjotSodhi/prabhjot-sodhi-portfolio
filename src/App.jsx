@@ -16,6 +16,8 @@ const QUERY = gql`
 
 function App() {
   const [posts, setPosts] = useState(null);
+  const [NavOpen, setNavOpen] = useState(false);
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,22 +29,18 @@ function App() {
       }
     };
     fetchData();
-    console.log(posts && posts.map(post => (post.title)))
   }, []);
-
-  
 
   return (
     <div className="App">
       <header className="nav_container border_bottom">
         <section className="container">
           <div className="nav_wrapper">
-            <Link href="/" className="logo_text"><h2>Prabhjot Sodhi</h2></Link>
-            <button className="mobile_nav_toggle" aria-controls="primary-navigation" aria-expanded="false">
-              <img className="icon_hamburger" src="/hamburger.svg" alt=""></img>
-              <img className="icon_close" src="/hamburger-close.svg"></img>
+            <Link to="/" className="logo_text"><h2>Prabhjot Sodhi</h2></Link>
+            <button className="mobile_nav_toggle" id="mobile-nav-toggle" onClick={()=>setNavOpen(!NavOpen)}>
+              <img className={NavOpen ? "icon_close" : "icon_hamburger"} src={NavOpen ? "/hamburger-close.svg" : "/hamburger.svg"} alt=""></img>
             </button>
-            <nav className="primary_navigation" id="primary-navigation">
+            <nav className={`primary_navigation ${NavOpen ? "nav_visible" : ""}`} id="primary-navigation">
                 <ul className="nav_list">
                   <li><a href="#writing" data-id="writing">writing</a></li>
                   <li><a href="#projects" data-id="projects">projects</a></li>  

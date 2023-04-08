@@ -269,11 +269,13 @@ small {
   .nav_list {
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      gap: 1.5rem;
       padding-left: 0;
       margin-inline: 1rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
   }
-  .primary_navigation[data-visible] {
+  .nav_visible {
       display: block;
   }
   .mobile_nav_toggle {
@@ -282,9 +284,6 @@ small {
       background: transparent;
       border: 0;
       padding: 0.5em;
-  }
-  .mobile_nav_toggle .icon_close {
-      display: none;
   }
 }
 

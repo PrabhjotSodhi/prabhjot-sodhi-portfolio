@@ -29,6 +29,7 @@ function Blog() {
     const slug = useParams();
     const [post, setPost] = useState(null);
     const [content, setContent] = useState(null);
+    const [NavOpen, setNavOpen] = useState(false);
 
     useEffect(() => {
       const fetchData = async () => {
@@ -60,11 +61,10 @@ function Blog() {
           <section className="container">
             <div className="nav_wrapper">
               <Link to="/" className="logo_text"><h2>Prabhjot Sodhi</h2></Link>
-              <button className="mobile_nav_toggle" aria-controls="primary-navigation" aria-expanded="false">
-                <img className="icon_hamburger" src="/hamburger.svg" alt=""></img>
-                <img className="icon_close" src="/hamburger-close.svg"></img>
+              <button className="mobile_nav_toggle" id="mobile-nav-toggle" onClick={()=>setNavOpen(!NavOpen)}>
+                <img className={NavOpen ? "icon_close" : "icon_hamburger"} src={NavOpen ? "/hamburger-close.svg" : "/hamburger.svg"} alt=""></img>
               </button>
-              <nav className="primary_navigation" id="primary-navigation">
+              <nav className={`primary_navigation ${NavOpen ? "nav_visible" : ""}`} id="primary-navigation">
                   <ul className="nav_list">
                     <li><Link to="/" data-id="writing">writing</Link></li>
                     <li><Link to="/" data-id="projects">projects</Link></li>  
@@ -73,6 +73,7 @@ function Blog() {
             </div>
           </section>
         </header>
+
         <main>
           {post ? (
           <div className="container blog-container"> 
