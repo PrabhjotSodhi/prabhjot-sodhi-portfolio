@@ -116,7 +116,7 @@ function App() {
                 <div>
                     <img src="/HangukDramaList.png" alt="Hanguk Drama List" style={{maxWidth: "100%", minHeight: "100%", objectFit: "contain"}}></img>
                 </div>
-                <a href="https://github.com/PrabhjotSodhi/HangukDramaList" target="_blank"></a>
+                <a href="https://github.com/PrabhjotSodhi/HangukDramaList" target="_blank" rel="noopener noreferrer"></a>
               </div>
 
             </div>
