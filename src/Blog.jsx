@@ -1,7 +1,9 @@
 import { GraphQLClient, gql } from 'graphql-request'
 import { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom";
+import {load} from 'cheerio';
 import './blog.css'
+import './window.css'
 
 const graphcms = new GraphQLClient(import.meta.env.VITE_API_URL)
 const QUERY = gql`
@@ -24,6 +26,7 @@ const SLUGLIST = gql`{posts {slug}}`
 function Blog() {
     const slug = useParams();
     const [post, setPost] = useState(null);
+    const [content, setContent] = useState(null);
 
     useEffect(() => {
       const fetchData = async () => {
@@ -35,7 +38,17 @@ function Blog() {
         }
       };
       fetchData();
-    }, []);
+      if (post) {
+        const loadContent = load(post.content.html)
+        const tocHeadings = loadContent('h2')
+        // Loop over the h2 elements and set their id attributes based on their contents
+        loadContent('h2').each((i, el) => {
+          const id = loadContent(el).text().replace(/\s+/g, '-').toLowerCase();
+          loadContent(el).attr('id', id);
+        });
+        setContent(loadContent.html())
+      }
+    }, [post]);
 
     return (
       <div className="App">
@@ -69,9 +82,16 @@ function Blog() {
                         </div>))}
                   </div>
                   <h1>{post.title}</h1>
-                  <div dangerouslySetInnerHTML={{__html: post.content.html}}>
-                  </div>
+                  <article className="content" dangerouslySetInnerHTML={{__html: content}}></article>
               </section>
+              <section className="sticky-column padding-section" id="toc">
+                <div className="writing-window">
+                    <small><strong>TABLE OF CONTENTS</strong></small>
+                    <div className="headings">
+                      
+                        </div>
+                </div>
+            </section>
           </div>
           ) : (
             <p>Loading...</p>
