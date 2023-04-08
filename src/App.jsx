@@ -100,7 +100,7 @@ function App() {
                     <h2>{post.title}</h2>
                     <p>{post.description}</p>
                     <small style={{fontWeight: 700, textTransform: "uppercase", textAlign: "right", marginTop: "auto"}}>{new Date(post.datePublished).toLocaleDateString("en-US", {month: 'short', day: 'numeric', year: 'numeric'})}</small>
-                    <Link to={"blog/"+post.slug}></Link>
+                    <Link to={`blog/${post.slug}`}></Link>
                   </div>
                 ))}
                 </div>
