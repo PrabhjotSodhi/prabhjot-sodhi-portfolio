@@ -155,7 +155,7 @@
     fill: var(--clr-accent-200);
     color: var(--clr-accent-200);
 }
-.writing-window:nth-child(3n) .arrow-button:is(:hover, :focus) {
+.writing_window:nth-child(3n) .arrow-button:is(:hover, :focus) {
     fill: var(--clr-accent-300);
     color: var(--clr-accent-300);
 }

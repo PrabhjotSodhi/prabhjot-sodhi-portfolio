@@ -2,8 +2,10 @@ import { GraphQLClient, gql } from 'graphql-request'
 import { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom";
 import {load} from 'cheerio';
+import { Helmet } from 'react-helmet';
 import './blog.css'
 import './window.css'
+
 
 const graphcms = new GraphQLClient(import.meta.env.VITE_API_URL)
 const QUERY = gql`
@@ -51,6 +53,9 @@ function Blog() {
 
     return (
       <div className="App">
+        <Helmet>
+          <title>{`${post?.title} | Prabhjot Sodhi's Portfolio`}</title>
+        </Helmet>
         <header className="nav_container border_bottom">
           <section className="container">
             <div className="nav_wrapper">
@@ -61,8 +66,8 @@ function Blog() {
               </button>
               <nav className="primary_navigation" id="primary-navigation">
                   <ul className="nav_list">
-                    <li><a href="#writing" data-id="writing">writing</a></li>
-                    <li><a href="#projects" data-id="projects">projects</a></li>  
+                    <li><a href="/" data-id="writing">writing</a></li>
+                    <li><a href="/" data-id="projects">projects</a></li>  
                   </ul>
               </nav>
             </div>
@@ -84,7 +89,7 @@ function Blog() {
                   <article className="content" dangerouslySetInnerHTML={{__html: content}}></article>
               </section>
               <section className="sticky-column padding-section" id="toc">
-                <div className="writing-window">
+                <div className="toc-window">
                     <small><strong>TABLE OF CONTENTS</strong></small>
                     <div className="headings">
                     {load(post.content.html)('h2').map((i, el) => (
@@ -98,6 +103,31 @@ function Blog() {
             <p>Loading...</p>
           )}
         </main>
+        <footer className="clr-neutral-100" style={{borderTop: "3px solid #000000", borderBottom: "3px solid #000000", padding: "1rem 0"}}>
+          <div className="container even-columns" style={{padding: "1.5rem 0"}}>
+              <div style={{display: "flex", flexDirection: "column", gap: "1rem"}}>
+                <h2>Prabhjot Sodhi</h2>
+                <p>Thanks for reading. Feel free to chat with me through my socials!</p>
+                <p className="fw-bold">My Links</p>
+                  <div className="social-list">
+                      <a href="https://www.linkedin.com/in/prabhjotsodhi/" target="_blank" rel="noopener noreferrer"><svg className="social-icon"><use href="/social-icons.svg#linkedin"></use></svg></a>
+                      <a href="https://github.com/PrabhjotSodhi" target="_blank" rel="noopener noreferrer"><svg className="social-icon"><use href="/social-icons.svg#github"></use></svg></a>
+                      <a href="https://www.instagram.com/prabhjotsodhi/" target="_blank" rel="noopener noreferrer"><svg className="social-icon"><use href="/social-icons.svg#instagram"></use></svg></a>
+                      <a href="mailto:sodhiprabhjot23@gmail.com" target="_blank" rel="noopener noreferrer"><svg className="social-mail"><use href="/social-icons.svg#mail"></use></svg></a>
+                  </div>
+              </div>
+              <div className="push-right"  style={{display: "flex", flexDirection: "column", gap: "1rem"}}>
+                  <h2>How I built this</h2>
+                  <p className="fw-bold">Stack</p>
+                  <p><a href="https://react.dev/" target="_blank" rel="noopener noreferrer" className="footer-link">React JS</a> + <a href="https://vitejs.dev/" target="_blank" rel="noopener noreferrer" className="footer-link">Vite JS</a> + <a href="https://hygraph.com/" target="_blank" rel="noopener noreferrer" className="footer-link">Hygraph</a></p>
+                  <p className="fw-bold">Miscellaneous</p>
+                  <p><a href="https://github.com/PrabhjotSodhi/prabhjot-sodhi-portfolio" target="_blank" rel="noopener noreferrer" className="footer-link">Github Repository</a> + <a href="https://www.figma.com/file/gMWEqPuwOzDr9Ngu4ajcr1/%5BPUBLIC%5D-Portfolio-Design?node-id=0%3A1&t=n2SMN0UF24hTuPkY-1" target="_blank" rel="noopener noreferrer" className="footer-link">Figma Design</a></p>
+              </div>
+          </div>
+        </footer>
+        <section className="container even-columns" style={{padding: "1.5rem 0", display: "flex"}}>
+            <p>© 2022 - Prabhjot Sodhi</p><p style={{marginLeft: "auto"}}>Deployed on <a href="https://vercel.com/" target="_blank" rel="noopener noreferrer" className="footer-link">Vercel</a></p>
+        </section>
       </div>
     )
 }
