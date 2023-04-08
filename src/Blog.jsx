@@ -1,6 +1,6 @@
 import { GraphQLClient, gql } from 'graphql-request'
 import { useState, useEffect } from 'react'
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import {load} from 'cheerio';
 import { Helmet } from 'react-helmet';
 import './blog.css'
@@ -59,15 +59,15 @@ function Blog() {
         <header className="nav_container border_bottom">
           <section className="container">
             <div className="nav_wrapper">
-              <a href="/" className="logo_text"><h2>Prabhjot Sodhi</h2></a>
+              <Link to="/" className="logo_text"><h2>Prabhjot Sodhi</h2></Link>
               <button className="mobile_nav_toggle" aria-controls="primary-navigation" aria-expanded="false">
                 <img className="icon_hamburger" src="/hamburger.svg" alt=""></img>
                 <img className="icon_close" src="/hamburger-close.svg"></img>
               </button>
               <nav className="primary_navigation" id="primary-navigation">
                   <ul className="nav_list">
-                    <li><a href="/" data-id="writing">writing</a></li>
-                    <li><a href="/" data-id="projects">projects</a></li>  
+                    <li><Link to="/" data-id="writing">writing</Link></li>
+                    <li><Link to="/" data-id="projects">projects</Link></li>  
                   </ul>
               </nav>
             </div>

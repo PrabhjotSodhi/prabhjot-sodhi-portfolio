@@ -37,7 +37,7 @@ function App() {
       <header className="nav_container border_bottom">
         <section className="container">
           <div className="nav_wrapper">
-            <a href="/" className="logo_text"><h2>Prabhjot Sodhi</h2></a>
+            <Link href="/" className="logo_text"><h2>Prabhjot Sodhi</h2></Link>
             <button className="mobile_nav_toggle" aria-controls="primary-navigation" aria-expanded="false">
               <img className="icon_hamburger" src="/hamburger.svg" alt=""></img>
               <img className="icon_close" src="/hamburger-close.svg"></img>
@@ -114,9 +114,9 @@ function App() {
               <div className="writing_window">
                 <h2>Hanguk Drama List</h2>
                 <div>
-                    <img src="/logo.svg" alt="Hanguk Drama List"></img>
+                    <img src="/HangukDramaList.png" alt="Hanguk Drama List" style={{maxWidth: "100%", minHeight: "100%", objectFit: "contain"}}></img>
                 </div>
-                <a href="#"></a>
+                <a href="https://github.com/PrabhjotSodhi/HangukDramaList" target="_blank"></a>
               </div>
 
             </div>
