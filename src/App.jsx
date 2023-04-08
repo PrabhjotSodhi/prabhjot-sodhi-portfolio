@@ -1,6 +1,7 @@
-import './Blog.css'
+import './window.css'
 import { GraphQLClient, gql } from 'graphql-request'
 import { useState, useEffect } from 'react'
+import { Link } from "react-router-dom"
 
 const graphcms = new GraphQLClient(import.meta.env.VITE_API_URL);
 const QUERY = gql`
@@ -99,7 +100,7 @@ function App() {
                     <h2>{post.title}</h2>
                     <p>{post.description}</p>
                     <small style={{fontWeight: 700, textTransform: "uppercase", textAlign: "right", marginTop: "auto"}}>{new Date(post.datePublished).toLocaleDateString("en-US", {month: 'short', day: 'numeric', year: 'numeric'})}</small>
-                    <a href={post.slug}></a>
+                    <Link to={"blog/"+post.slug}></Link>
                   </div>
                 ))}
                 </div>
