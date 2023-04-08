@@ -40,7 +40,6 @@ function Blog() {
       fetchData();
       if (post) {
         const loadContent = load(post.content.html)
-        const tocHeadings = loadContent('h2')
         // Loop over the h2 elements and set their id attributes based on their contents
         loadContent('h2').each((i, el) => {
           const id = loadContent(el).text().replace(/\s+/g, '-').toLowerCase();
@@ -88,7 +87,9 @@ function Blog() {
                 <div className="writing-window">
                     <small><strong>TABLE OF CONTENTS</strong></small>
                     <div className="headings">
-                      
+                    {load(post.content.html)('h2').map((i, el) => (
+                    <a href={`#${load(post.content.html)(el).text().replace(/\s+/g, '-').toLowerCase()}`}>{load(post.content.html)(el).text()}</a>
+                    ))}
                         </div>
                 </div>
             </section>
