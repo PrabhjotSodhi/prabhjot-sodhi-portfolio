@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { useParams, Link } from "react-router-dom";
 import {load} from 'cheerio';
 import { Helmet } from 'react-helmet';
-import './blog.css'
+import './Blog.css'
 import './window.css'
 
 
