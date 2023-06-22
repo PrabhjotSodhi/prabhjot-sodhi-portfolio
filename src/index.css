@@ -61,9 +61,8 @@ body {
 }
 .container {
   --max-width: 996px;
-  --padding: var(--size-section) 1rem;
-
-  width: min(var(--max-width), 100% - (var(--padding)*2));
+  --padding: 2.6rem;
+  width: min(var(--max-width), calc(100% - var(--padding)));
   margin-inline: auto;
 }
 .fw-bold {font-weight: var(--fw-bold);}

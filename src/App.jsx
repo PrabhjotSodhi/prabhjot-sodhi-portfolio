@@ -65,8 +65,10 @@ function App() {
               <p>As an engineering student, I am constantly learning new skills and expanding my knowledge to adopt a engineering approach to problem solving.</p>
               <p>In my spare time, I enjoy using programming languages and tools to create various projects that solve a real world problem. I find great satisfaction in bringing my ideas to life through code, and I am always looking for new challenges and opportunities to learn and grow.</p> 
               <div style={{display: "flex"}}>
-                <button className="btn-primary" style={{marginRight: "1rem"}}>Let&apos;s get in touch!</button>
-                <a href="#" className="arrow-button">PDF Resume<svg className="arrow"><use href="./arrow.svg#arrow"></use></svg></a>
+                <a href="mailto:sodhiprabhjot23@gmail.com" target="_blank" rel="noopener noreferrer">
+                  <button className="btn-primary" style={{marginRight: "1rem"}}>Let&apos;s get in touch!</button>
+                </a>
+                <a href="https://drive.google.com/file/d/18p-Uw_CP1qnMdlQn-Sx5XJoTNQ8S4hl0/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="arrow-button">PDF Resume<svg className="arrow"><use href="./arrow.svg#arrow"></use></svg></a>
               </div>
             </div>
             <div>
