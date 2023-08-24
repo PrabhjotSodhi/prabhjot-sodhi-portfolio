@@ -61,8 +61,8 @@ function App() {
         <section className="container padding-section">
           <div className="even-columns">
             <div style={{display: "flex", flexDirection: "column", gap: "1.75rem"}}>
-              <h2>I&apos;m a Part I Engineering Student at the University of Auckland</h2>
-              <p>As an engineering student, I am constantly learning new skills and expanding my knowledge to adopt a engineering approach to problem solving.</p>
+              <h2>I&apos;m a Part I Computer Science Student at the University of Auckland</h2>
+              <p>I bring my engineering mindset, entrepreneurial experience, and passion for software development to projects. With an analytical approach, I love solving challenges innovatively and always keeping the end-users at the heart of my work.</p>
               <p>In my spare time, I enjoy using programming languages and tools to create various projects that solve a real world problem. I find great satisfaction in bringing my ideas to life through code, and I am always looking for new challenges and opportunities to learn and grow.</p> 
               <div style={{display: "flex"}}>
                 <a href="mailto:sodhiprabhjot23@gmail.com" target="_blank" rel="noopener noreferrer">
@@ -147,7 +147,7 @@ function App() {
         </div>
       </footer>
       <section className="container even-columns" style={{padding: "1.5rem 0", display: "flex"}}>
-          <p>© 2022 - Prabhjot Sodhi</p><p style={{marginLeft: "auto"}}>Deployed on <a href="https://vercel.com/" target="_blank" rel="noopener noreferrer" className="footer-link">Vercel</a></p>
+          <p>© 2023 - Prabhjot Sodhi</p><p style={{marginLeft: "auto"}}>Deployed on <a href="https://vercel.com/" target="_blank" rel="noopener noreferrer" className="footer-link">Vercel</a></p>
       </section>
     </div>
   )
